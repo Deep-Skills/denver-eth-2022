@@ -1,9 +1,9 @@
 # Decentralized Professional Identity Protocol
-This application enables portability and verifiability of professional reputation aggregated from a number of sources (SourceCred, CoordinApe, Colony, POAP, Github, Discord, Twitter). The protocol gives full control over credentials to the user and avoids any points of centralized sotrage or verification of data.
+This application enables portability and verifiability of professional reputation aggregated from a number of sources (SourceCred, CoordinApe, Colony, POAP, Github, Discord, Twitter). The protocol gives full control over credentials to the user and avoids any points of centralized storage or verification of data.
 
-This project demonstrates **bring your own data** concept:
-- All data is issued by indepented 3rd parties, such as SourceCred instance
-- Any application can request and read data from user's data stream
+This project demonstrates **bring your own data/credentials** concept:
+- All data is issued by independent 3rd parties, such as Coordinape, Github, SourceCred instance
+- By connecting your wallet with an application, it can request and read data from user's data stream
 - Users are ultimately in control regarding who can see their reputation and credentials
 - Any application or protocol is free to add their own connector for data issuance
 
@@ -19,10 +19,10 @@ This project was built during ETHDenver 2022 BUIDLathon.
 
 Project Contains:
 
-- Multiple connectors (pulling data from connector sepcific data hub)
-- Issuer module: recieves data from trusted data connector and issue (sign) strctured [Ceramic](https://ceramic.network/) Data according to the specific schema and store that data at the [Ceramic Stream](https://developers.ceramic.network/streamtypes/overview/)
+- Multiple connectors (pulling data from connector specific data hub)
+- Issuer module: recieves data from trusted data connector and issue (sign) strctured [Ceramic](https://ceramic.network/) data according to the specific schema and store that data at the [Ceramic Stream](https://developers.ceramic.network/streamtypes/overview/)
 - Frontend App 1
-- Frontend App 2 (at this itteration just '../profile' page of main application)
+- Frontend App 2 (at this iteration just '../profile' page of main application)
 
 
 Protocol supports flexible way of adding new data connectors. Currently supported connectors:
@@ -35,19 +35,19 @@ Protocol supports flexible way of adding new data connectors. Currently supporte
 
 
 ## Structure
-For the simplicity of deployment - all was wrapped into the one severless front end [application](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors-frontend)
+For simplicity of deployment - all was wrapped into the one severless front end [application](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors-frontend)
 
-- Refference implementation of issuer as services/servers [issuer as a server](https://github.com/DenisPopov15/denver-eth-2022/tree/main/issuer)
-- Refference implementation of connectors as services/servers: [server connectors](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors)
+- Reference implementation of issuer as services/servers [issuer as a server](https://github.com/DenisPopov15/denver-eth-2022/tree/main/issuer)
+- Reference implementation of connectors as services/servers: [server connectors](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors)
 - [Front end application](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors-frontend)
-- Server less implementation as part of one app for [connectors](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors-frontend/connectors)
-- Server less implementation as part of one app for [issuer](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors-frontend/issuer)
+- Serverless implementation as part of one app for [connectors](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors-frontend/connectors)
+- Serverless implementation as part of one app for [issuer](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors-frontend/issuer)
 
 
 ## Setup
 
  - Not Required, but good to have whole system to run locally: Make sure you have setup [pm2](https://www.npmjs.com/package/pm2) on your machine
- - Setup SorceCred instance, go to the `connectors/sourceCred/instance` - create `.env` from `.env.example`, set there SOURCECRED_GITHUB_TOKEN, for this: [setup github token](https://github.com/settings/tokens) with read packages access only. And SOURCECRED_DISCORD_TOKEN - its discord bot token (for hackathon test purpose - ask Denis to provide it, specially setup for this purpose)
+ - Setup SourceCred instance, go to the `connectors/sourceCred/instance` - create `.env` from `.env.example`, set there SOURCECRED_GITHUB_TOKEN, for this: [setup github token](https://github.com/settings/tokens) with read packages access only. And SOURCECRED_DISCORD_TOKEN - its discord bot token (for hackathon test purpose - ask Denis to provide it, specially setup for this purpose)
  - Go to connectors (+ issuer) folder and create `.env` file from `.env.example` there you will need mostly just add SERVICE_PRIVATE_KEY for each connector (which should/could be the same for each connector) and then set for the issuer `.env` paired to that TRUSTED_PUBLIC_KEY
  - Install dependencies for each services - just run `npm run fullInstall` from root project folder
  - Run the system `npm run startSystem` (will work only if pm2 installed)
