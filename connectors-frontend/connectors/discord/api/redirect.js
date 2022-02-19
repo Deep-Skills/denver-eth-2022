@@ -4,7 +4,6 @@ const DiscordService = require('../services/discordService')
 
 const redirect = async (req, res) => {
   const { address, return_url, signature, digest, encrypt } = req.query
-  // TODO: Add auth/signature verification
   const addressFromSignature = DiscordService.getVerifiedAddress(
     digest,
     signature
