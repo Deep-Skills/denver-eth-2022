@@ -12,7 +12,7 @@ const issuer = new IssuerService()
 const pullSourceCredData = withTimeout(async (req, res) => {
   try {
     let { identifiers, did, digest, signature, encrypt } = req.query
-    // TODO: Check auth/signature, that its belong to it did/ethereum address
+    // TODO: instead of identifiers recieve Github and Discord VCs, check it map accounts names based on that
     if (!identifiers?.length) {
       throw new Error('identifiers is empty')
     }
