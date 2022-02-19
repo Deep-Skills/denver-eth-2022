@@ -33,6 +33,9 @@ Protocol supports flexible way of adding new data connectors. Currently supporte
 - [Discord](https://discord.com/)
 - [Poap](https://poap.xyz/)
 
+## Architecture 
+
+<img width="539" alt="DeepSkillsv0 1Architecture" src="https://user-images.githubusercontent.com/4626014/154794082-30dddafc-1403-4a5f-a47f-3c31a3a45a13.png">
 
 ## Structure
 For simplicity of deployment - all was wrapped into the one severless front end [application](https://github.com/DenisPopov15/denver-eth-2022/tree/main/connectors-frontend)
