@@ -6,23 +6,22 @@ export const sourcecredApi = async (identifiers, did, digest, signature, encrypt
     {
       method: "GET",
     }
-  )
+  ).then(res => res.json())
 }
 
 export const sourcecredConnector = async (encrypt = false) => {
-  const identifiers = ["dmfilipenko","Dmytro-Filipenko"]
+  const identifiers = ["dmfilipenko", "Dmytro-Filipenko"]
   const provider = await getProvider()
   await requestAccounts(provider)
   const signer = provider.getSigner()
   const address = await signer.getAddress()
   const { signature, digest } = await takeMessageFromLocalStorageOrSign()
-  const result = await sourcecredApi(
+  return await sourcecredApi(
     identifiers,
     address,
     digest,
     signature,
     encrypt
   )
-  console.log(result)
 }
 

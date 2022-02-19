@@ -9,14 +9,13 @@ export const coordinapeConnector = async (encrypt) => {
 
   const dataSign = `Login to Coordinape ${now}`
   const signature = await signer.signMessage(dataSign)
-  const result = await coordinapeApi({
+  return await coordinapeApi({
     signature,
     address,
     signature,
     data: dataSign,
     encrypt
   })
-  console.log(result)
 }
 
 export const coordinapeApi = async ({ signature, address, data, hash, encrypt = true }) => {
@@ -32,5 +31,5 @@ export const coordinapeApi = async ({ signature, address, data, hash, encrypt = 
       hash,
       encrypt,
     }),
-  })
+  }).then(res => res.json())
 }

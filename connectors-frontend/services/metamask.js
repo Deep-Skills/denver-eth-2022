@@ -16,7 +16,7 @@ export const isMetamaskConnected = async (e) => {
 }
 
 export const listenConnectionMetamask = async (cb) => {
-  window.ethereum.on("accountsChanged", async function (accounts) {
+  window?.ethereum?.on("accountsChanged", async function (accounts) {
     cb(accounts.length > 0)
   })
 }

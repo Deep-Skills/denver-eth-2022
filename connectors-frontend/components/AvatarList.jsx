@@ -1,28 +1,23 @@
-import { Avatar, Box, Text } from '@chakra-ui/react'
+import { Avatar, Box, Text } from "@chakra-ui/react"
 
-export const AvatarList = ({
-  avatars,
-  size = 'md',
-  max = 3
-}) => {
+export const AvatarList = ({ avatars, size = "md", max = 3 }) => {
   const restOfUsers = avatars.length - max
   return (
-    <Box display='flex' alignItems='center'>
-      <Box display='flex'>
+    <Box display="flex" alignItems="center">
+      <Box display="flex">
         {avatars.slice(0, max).map((user, index) => (
-          <Box key={index} ml={index !== 0 ? '-10px' : 0} zIndex={100 - index}>
+          <Box key={index} ml={index !== 0 ? "-10px" : 0} zIndex={100 - index}>
             <Avatar
-              data-testid={user}
-              borderRadius='full'
+              borderRadius="full"
               size={size}
-              src={user}
+              src={`https://coordinape-prod.s3.amazonaws.com/${user.avatar}`}
             />
           </Box>
         ))}
       </Box>
       {restOfUsers > 0 && (
-        <Box ml='9px'>
-          <Text color='gray.79' fontSize='md'>
+        <Box ml="9px">
+          <Text color="gray.79" fontSize="md">
             {getRestText(restOfUsers)}
           </Text>
         </Box>
@@ -30,51 +25,51 @@ export const AvatarList = ({
     </Box>
   )
 }
-export const getRestText = () =>
-  `+ ${convertNumberToWordsEN(rest)} other${rest > 1 ? 's' : ''}`
+export const getRestText = (rest) =>
+  `+ ${convertNumberToWordsEN(rest)} other${rest > 1 ? "s" : ""}`
 // https://gist.github.com/ForbesLindesay/5467742
-export function convertNumberToWordsEN() {
+export function convertNumberToWordsEN(value) {
   value = Math.floor(value)
   const ones = [
-    '',
-    'one',
-    'two',
-    'three',
-    'four',
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine',
-    'ten',
-    'eleven',
-    'twelve',
-    'thirteen',
-    'fourteen',
-    'fifteen',
-    'sixteen',
-    'seventeen',
-    'eighteen',
-    'nineteen'
+    "",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
   ]
   const tens = [
-    '',
-    '',
-    'twenty',
-    'thirty',
-    'forty',
-    'fifty',
-    'sixty',
-    'seventy',
-    'eighty',
-    'ninety'
+    "",
+    "",
+    "twenty",
+    "thirty",
+    "forty",
+    "fifty",
+    "sixty",
+    "seventy",
+    "eighty",
+    "ninety",
   ]
 
   const numString = value.toString()
 
-  if (value < 0) throw new Error('Negative numbers are not supported.')
+  if (value < 0) throw new Error("Negative numbers are not supported.")
 
-  if (value === 0) return 'zero'
+  if (value === 0) return "zero"
 
   // the case of 1 - 20
   if (value < 20) {
@@ -82,33 +77,33 @@ export function convertNumberToWordsEN() {
   }
 
   if (numString.length === 2) {
-    return tens[Number(numString[0])] + ' ' + ones[Number(numString[1])]
+    return tens[Number(numString[0])] + " " + ones[Number(numString[1])]
   }
 
   // 100 and more
   if (numString.length === 3) {
-    if (numString[1] === '0' && numString[2] === '0')
-      return ones[Number(numString[0])] + ' hundred'
+    if (numString[1] === "0" && numString[2] === "0")
+      return ones[Number(numString[0])] + " hundred"
     else
       return (
         ones[Number(numString[0])] +
-        ' hundred and ' +
+        " hundred and " +
         convertNumberToWordsEN(+(numString[1] + numString[2]))
       )
   }
 
   if (numString.length === 4) {
     const end = +(numString[1] + numString[2] + numString[3])
-    if (end === 0) return ones[Number(numString[0])] + ' thousand'
+    if (end === 0) return ones[Number(numString[0])] + " thousand"
     if (end < 100)
       return (
         ones[Number(numString[0])] +
-        ' thousand and ' +
+        " thousand and " +
         convertNumberToWordsEN(end)
       )
     return (
-      ones[Number(numString[0])] + ' thousand ' + convertNumberToWordsEN(end)
+      ones[Number(numString[0])] + " thousand " + convertNumberToWordsEN(end)
     )
   }
-  return ''
+  return ""
 }

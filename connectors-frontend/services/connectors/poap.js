@@ -11,7 +11,7 @@ export const poapApi = async ({ signature, address, digest, encrypt }) => {
       digest,
       encrypt
     }),
-  })
+  }).then(res => res.json())
 }
 
 export const poapConnector = async (encrypt = false) => {
@@ -20,11 +20,10 @@ export const poapConnector = async (encrypt = false) => {
   const signer = provider.getSigner()
   const address = await signer.getAddress()
   const { signature, digest } = await takeMessageFromLocalStorageOrSign()
-  const result = await poapApi({
+  return await poapApi({
     address,
     signature,
     digest,
     encrypt
   })
-  console.log(result)
 }

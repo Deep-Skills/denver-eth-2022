@@ -75,7 +75,7 @@ class GithubService {
     let publicRepos = []
     for await (const { data: repos } of iterator) {
       const notForkNotPrivate = repos?.filter(
-        (repo) => !repo.private && !repo.fork
+        (repo) => !repo.private
       )
 
       publicRepos = [...publicRepos, ...notForkNotPrivate]

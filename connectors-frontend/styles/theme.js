@@ -39,10 +39,10 @@ export const theme = extendTheme({
     heading: 'Montserrat',
     body: 'Montserrat',
   },
-  sizes: {
-    container: {
-      lg: 'calc(930px + 2rem)',
-      xl: 'calc(1300px + 2rem)'
-    }
-  },
+  // sizes: {
+  //   container: {
+  //     lg: 'calc(930px + 2rem)',
+  //     xl: 'calc(1300px + 2rem)'
+  //   }
+  // },
 })

@@ -1,10 +1,9 @@
-import { Heading, Container } from "@chakra-ui/react"
-import {} from "@chakra-ui/react"
+import { Box, Heading, Container } from "@chakra-ui/react"
 
 export const Section = ({ title, children }) => {
   return (
-    <>
+    <Box mb="40px">
       {children}
-    </>
+    </Box>
   )
 }

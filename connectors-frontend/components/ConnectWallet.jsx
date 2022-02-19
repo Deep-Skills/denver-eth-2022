@@ -12,9 +12,9 @@ export const ConnectWallet = ({ onClick, isMetamaskConnected }) => {
       fontWeight="600"
       px={4}
       h={12}
-      onClick={!isMetamaskConnected ? onClick : () => {}}
+      onClick={onClick}
     >
-      {isMetamaskConnected ? 'Wallet connected' : 'Connect your Wallet'}
+      {isMetamaskConnected ? 'To connectors' : 'Connect your Wallet'}
     </Box>
   )
 }

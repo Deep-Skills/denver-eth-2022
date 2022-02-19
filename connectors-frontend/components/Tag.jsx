@@ -25,6 +25,7 @@ export const Tag = ({ disabled, selected, value, onClick }) => {
       alignItems="center"
       px="12px"
       py="3px"
+      mr="10px"
       height="20px"
       borderRadius="17px"
       color={fontColor}
@@ -37,7 +38,7 @@ export const Tag = ({ disabled, selected, value, onClick }) => {
       cursor={disabled ? 'not-allowed' : 'pointer'}
       onClick={disabled ? () => undefined : handleClick}
     >
-      {splitCamelCase(value)}
+      {value}
     </Text>
   )
 }

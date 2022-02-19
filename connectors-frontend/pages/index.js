@@ -22,7 +22,7 @@ export default function Home({ ceramicUrl }) {
       await connectMetamask()
       const message = await takeMessageFromLocalStorageOrSign()
       localStorage.setItem('signedMessage', JSON.stringify(message))
-      window.location = '/profile'
+      window.location = '/connectors'
     } catch (e) {
       console.log(e)
     }
@@ -31,7 +31,11 @@ export default function Home({ ceramicUrl }) {
     if (!isConnected) {
       localStorage.removeItem('signedMessage')
     }
+    
   }, [isConnected])
+  const goToConnectors = () => {
+    window.location = '/connectors'
+  }
   return (
     <>
       <Header isMetamaskConnected={isConnected} onClick={connectMetamaskHandler} />
@@ -42,7 +46,7 @@ export default function Home({ ceramicUrl }) {
           <Text fontSize='xl' color='#1D1E20'>
             Claim, explore and share your professional identity based on merit, skills and real working and learning experience. </Text>
           <br />
-          <ConnectWallet isMetamaskConnected={isConnected} onClick={connectMetamaskHandler} />
+          <ConnectWallet isMetamaskConnected={isConnected} onClick={isConnected ? goToConnectors : connectMetamaskHandler} />
         </div>
         <div className={styles.hero}>
           <Box boxSize='lg'>

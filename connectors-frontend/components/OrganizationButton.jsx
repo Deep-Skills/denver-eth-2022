@@ -9,7 +9,7 @@ export const OrganizationButton = ({
   tooltipText,
   ...rest
 }) => {
-  const { width, height, lineHeight, fontSize } = getSize(size)
+  const { width, height, lineHeight } = getSize(size)
   return (
     <Box display='flex' alignItems='center' {...rest}>
       <Avatar
@@ -27,6 +27,7 @@ export const OrganizationButton = ({
             fontWeight={600}
             fontSize='14px'
             lineHeight={helperText ? '17.71px' : lineHeight}
+            noOfLines={3}
           >
             {label}
           </Text>

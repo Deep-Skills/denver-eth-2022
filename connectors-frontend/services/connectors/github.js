@@ -1,6 +1,6 @@
 import { getProvider, requestAccounts, takeMessageFromLocalStorageOrSign } from '../provider'
 
-export const githubApi = async ({ identifiers, encrypt }) => {
+export const githubApi = async ({  encrypt }) => {
   const provider = await getProvider()
   await requestAccounts(provider)
   const signer = provider.getSigner()
@@ -8,7 +8,6 @@ export const githubApi = async ({ identifiers, encrypt }) => {
   const { signature, digest } = await takeMessageFromLocalStorageOrSign()
   let params = new URLSearchParams({
     address,
-    identifiers,
     encrypt,
     signature,
     digest,
@@ -19,6 +18,6 @@ export const githubApi = async ({ identifiers, encrypt }) => {
   }).then(res => res.json())
 }
 
-export const githubConnector = async ({ identifiers, encrypt }) => {
-  return await githubApi({ identifiers, encrypt }).then(({ url }) => url)
+export const githubConnector = async ({ encrypt }) => {
+  return await githubApi({ encrypt }).then(({ url }) => url)
 }

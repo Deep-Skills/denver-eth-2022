@@ -17,8 +17,6 @@ export const discordApi = async ({ identifiers, encrypt }) => {
   })
   return fetch(`/api/discord/redirect?${params.toString()}`, {
     method: "GET",
-    // mode: "no-cors",
-    // redirect: "follow",
   }).then(res => res.json())
 }
 

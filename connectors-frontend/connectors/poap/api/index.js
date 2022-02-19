@@ -25,6 +25,7 @@ const getPoapTokens = withTimeout(async (req, res) => {
     if (result.errors.length > 0) {
       throw new Error('schema got changed')
     }
+    if (!firstToken) throw new Error('no tokens')
     firstToken.holderDid = address
     let results = await issuer.issueStructeredData(
       firstToken,
