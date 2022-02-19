@@ -3,7 +3,6 @@ const GithubService = require('../services/githubService')
 
 const redirect = async (req, res) => {
   const { address, signature, digest, encrypt, return_url } = req.query
-  // TODO: Add auth/signature verification
   const addressFromSignature = GithubService.getVerifiedAddress(
     digest,
     signature
